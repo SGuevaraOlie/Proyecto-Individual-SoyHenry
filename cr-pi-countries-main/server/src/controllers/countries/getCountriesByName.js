@@ -1,6 +1,6 @@
 const { Country } = require('../../db');
 
-const getCountriesByName = async (req, res) => {
+const getCountryByName = async (req, res) => {
     try {
         let { name } = req.query;
         if (!name) return res.status(400).send('Ingrese el nombre en la consulta');
@@ -12,4 +12,4 @@ const getCountriesByName = async (req, res) => {
     }
 }
 
-module.exports = getCountriesByName;
+module.exports = getCountryByName;

@@ -1,8 +1,9 @@
 const PATHROUTES = {
     LANDING: "/",
     HOME: "/home",
-    DETAIL: "/detail",
+    DETAIL: "/detail/:id",
     FORM: "/form",
-    ERROR: "/error",
-    SUBMITTED: "/submitted",
+    ERROR: "*",
 }
+
+export default PATHROUTES;
