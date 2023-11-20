@@ -11,14 +11,14 @@ import Detail from './views/Detail/Detail.view'
 import Form from './views/Form/Form.view'
 import Error from './views/Error/Error.view'
 // Component
-// import NavBar from './components'
+import NavBar from './components/NavBar/NavBar'
 
 function App() {
   const { pathname } = useLocation();
   const noNavBar = pathname === PATHROUTES.LANDING || pathname === PATHROUTES.ERROR; 
   return (
     <div className='App'>
-      {/* {!noNavBar && <NavBar />} */}
+      {!noNavBar && <NavBar />}
       <Routes>
         <Route path={PATHROUTES.LANDING} element={<Landing />} />
         <Route path={PATHROUTES.HOME} element={<Home />} />
