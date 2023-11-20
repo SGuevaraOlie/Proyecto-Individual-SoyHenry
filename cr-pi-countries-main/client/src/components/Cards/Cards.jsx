@@ -7,10 +7,10 @@ const Cards = ({currentCards}) => {
     return (
         <div className={styles.container}>
             <div className={styles.cards}>
-                {currentCards.map((country) => (
+                {currentCards.map((country, index) => (
                     <Card
-                    key={country?.ID}
-                    id={country?.ID}
+                    key={country?.id || index}
+                    id={country?.id}
                     name={country?.name}
                     image={country?.image}
                     continente={country?.continente} />

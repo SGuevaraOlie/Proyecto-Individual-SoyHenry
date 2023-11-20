@@ -79,7 +79,7 @@ export const filterCountriesByActivity = (activity) => {
         const filteredCountries = 
             activity === "all"
             ? allCountries
-            : allCountries.filter((country) => country.Activities.some((act) => act.Nombre === activity));
+            : allCountries.filter((country) => country.Activities && country.Activities.some((act) => act.name === activity));
         dispatch({
             type: FILTER_COUNTRIES_BY_ACTIVITY,
             payload: filteredCountries,

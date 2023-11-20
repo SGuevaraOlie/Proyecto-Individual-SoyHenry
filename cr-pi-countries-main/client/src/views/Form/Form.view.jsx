@@ -15,7 +15,7 @@ const Form = () => {
     dificultad: 1,
     duracion: 1,
     temporada: "",
-    countries: []
+    countries: [],
   });
   const countryNames = useSelector((state) => state.countries.map((country) => country.name));
   const handleChange = (event) => {
@@ -25,23 +25,24 @@ const Form = () => {
     });
   };
   const handleSelectChange = (event) => {
+    const selectedCountries = Array.from(
+      event.target.selectedOptions,
+      (option) => option.value
+    );
     setValues({
       ...values,
-      countries: Array.from(
-        event.target.selectedOptions,
-        (option) => option.value
-      )
+      countries: selectedCountries,
     });
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if(!values.nombre || /[^a-zA-Z ]/.test(values.nombre)){
+    if(!values.name || /[^a-zA-Z ]/.test(values.name)){
       alert('El nombre de la actividad es obligatorio y no puede contener números.');
       return;
     }
     try {
       const response = await axios.post(
-        'https://localhost:3001/activities',
+        'http://localhost:3001/activities',
         values
       )
       const successfulMessage = `Se ha creado la nueva actividad turística: ${values.name}`;
@@ -62,16 +63,16 @@ const Form = () => {
     <div className={styles.formDiv}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <label>
-          Nombre: <input type="text" name="Nombre" value={values.name} onChange={handleChange} required />
+          Nombre: <input type="text" name="name" value={values.name} onChange={handleChange} required />
         </label>
         <label>
-          Dificultad: <input type="number" min="1" max="5" name="Dificultad" value={values.dificultad} onChange={handleChange} required />
+          Dificultad: <input type="number" min="1" max="5" name="dificultad" value={values.dificultad} onChange={handleChange} required />
         </label>
         <label>
-          Duracion (hs): <input type="number" min="0" name="Duracion" value={values.duracion} onChange={handleChange} />
+          Duracion (hs): <input type="number" min="0" name="duracion" value={values.duracion} onChange={handleChange} />
         </label>
         <label>
-          Temporada: <select name="Temporada" value={values.temporada} onChange={handleChange} required>
+          Temporada: <select name="temporada" value={values.temporada} onChange={handleChange} required>
             <option value="">Selecciona una temporada</option>
             <option value="Verano">Verano</option>
             <option value="Otoño">Otoño</option>

@@ -10,7 +10,7 @@ const syncApiDb = async () => {
                 id: country.cca3,
                 name: country.name.common,
                 image: country.flags.png,
-                continente: country.continents[0],
+                continente: country.region,
                 capital: country.capital ? country.capital[0] : 'No tiene.',
                 subregion: country.subregion ? country.subregion : 'No tiene.',
                 area: country.area,

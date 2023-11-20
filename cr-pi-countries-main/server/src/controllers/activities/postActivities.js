@@ -16,7 +16,7 @@ const postActivities = async(req, res) => {
     if(!creada) return res.status(409).json('La actividad ya existe');
     const paisesSeleccionados = await Country.findAll({
         where: { name: countries }
-    })
+      });
     await actividadCreada.setCountries(paisesSeleccionados);
     res.status(201).json(actividadCreada);
     } catch (error) {

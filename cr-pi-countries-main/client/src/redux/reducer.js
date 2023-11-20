@@ -55,12 +55,12 @@ const rootReducer = ( state = initialState, {type, payload}) => {
         case SORT_COUNTRIES_BY_NAME_ASCENDING:
             return {
                 ...state,
-                countries: [...state.countries].sort((a,b) => a.name.localCompare(b.name))
+                countries: [...state.countries].sort((a,b) => a.name.localeCompare(b.name))
             }
         case SORT_COUNTRIES_BY_NAME_DESCENDING:
             return {
                 ...state,
-                countries: [...state.countries].sort((a,b) => b.name.localCompare(a.name))
+                countries: [...state.countries].sort((a,b) => b.name.localeCompare(a.name))
             }
         case SORT_COUNTRIES_BY_POPULATION_ASCENDING:
             return {
