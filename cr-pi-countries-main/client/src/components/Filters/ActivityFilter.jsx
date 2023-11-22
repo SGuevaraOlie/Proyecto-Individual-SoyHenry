@@ -20,12 +20,8 @@ const ActivityFilter = () => {
     }, []);
     const handleActivityChange = (event) => {
         const activity = event.target.value;
-        if (activity === "all"){
-            dispatch(resetCountries());
-        } else {
-            dispatch(filterCountriesByActivity(activity));
-        }
-    }
+        dispatch(filterCountriesByActivity(activity))
+    };
     return (
         <div>
             <select onChange={handleActivityChange}>

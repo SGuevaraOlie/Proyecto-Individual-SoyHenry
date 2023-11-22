@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    subergion:{
+    subregion:{
       type: DataTypes.STRING,
     },
     area:{

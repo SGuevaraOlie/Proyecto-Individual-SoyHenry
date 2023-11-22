@@ -35,9 +35,10 @@ export const searchCountries = (name) => {
             if (response.data.length === 0){
                 window.alert(`No se encontró ningún país con el nombre ${name}`)
             } else {
+                const dataArray = [response.data];
                 dispatch({
                     type: SEARCH_COUNTRIES,
-                    payload: response.data
+                    payload: dataArray
                 })
             }
         } catch (error) {
@@ -86,6 +87,7 @@ export const filterCountriesByActivity = (activity) => {
         })
     }
 }
+
 
 export const sortCountriesByNameAscending = () => {
     return {

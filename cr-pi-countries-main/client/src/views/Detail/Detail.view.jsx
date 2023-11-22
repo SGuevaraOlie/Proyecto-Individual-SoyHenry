@@ -14,7 +14,6 @@ const Detail = () => {
         axios(`http://localhost:3001/countries/${id}`)
         .then((res) => {
             setCountry(res.data);
-            console.log(res)
         })
         .catch((err) => {
             console.log(err)
