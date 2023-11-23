@@ -76,18 +76,23 @@ export const filterCountriesByContinent = (continent) => {
 
 export const filterCountriesByActivity = (activity) => {
     return (dispatch, getState) => {
-        const allCountries = getState().allCountries;
-        const filteredCountries = allCountries.filter((country) =>
-            country.Countries && country.Countries.includes(activity)
-        );
-        console.log("Filtered Countries:", filteredCountries);
-        dispatch({
-            type: FILTER_COUNTRIES_BY_ACTIVITY,
-            payload: filteredCountries,
-        })
+        try {
+            const allCountries = getState().allCountries;
+            let filteredCountries;
+            if (activity === "all"){
+                filteredCountries = allCountries;
+            } else {
+                filteredCountries = allCountries.filter((country) => country.Activities.some((act) => act.name === activity));
+            }
+            dispatch ({
+                type: FILTER_COUNTRIES_BY_ACTIVITY,
+                payload: filteredCountries
+            })
+        } catch (error) {
+            console.error('Error al filtrar países por actividad', error);
+        }
     }
 }
-
 
 export const sortCountriesByNameAscending = () => {
     return {

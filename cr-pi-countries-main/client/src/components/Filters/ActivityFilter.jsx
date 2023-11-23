@@ -13,12 +13,12 @@ const ActivityFilter = () => {
     const dispatch = useDispatch();
     const [activities, setActivities] = useState([]);
     useEffect(() => {
-        const fetchActivities = async() => {
+        const filterActivities = async() => {
             const response = await axios.get("http://localhost:3001/activities");
             const activityNames = response.data.map((activity) => activity.name);
             setActivities(activityNames);
         };
-        fetchActivities();
+        filterActivities();
     }, []);
     const handleActivityChange = (event) => {
         const activity = event.target.value;

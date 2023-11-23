@@ -4,12 +4,17 @@ import { useState } from "react";
 import axios from "axios";
 // Redux
 import { useSelector } from "react-redux";
+// Router
+import { useNavigate } from "react-router-dom";
+// Helpers
+import PATHROUTES from "../../helpers/PathRoutes.helper";
 // Components
 import Filter from "../../components/Filters/Filter";
 // Styles
 import styles from './Form.module.css';
 
 const Form = () => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     name: "",
     dificultad: 1,
@@ -54,6 +59,7 @@ const Form = () => {
         temporada: "",
         countries: []
       });
+      navigate(PATHROUTES.HOME)
     } catch (error) {
       if (error.response && error.response.data) alert('Ya existe una actividad con ese nombre.');
       else console.error(error);
