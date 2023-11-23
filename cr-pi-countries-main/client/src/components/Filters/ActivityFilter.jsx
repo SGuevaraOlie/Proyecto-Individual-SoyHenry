@@ -22,7 +22,11 @@ const ActivityFilter = () => {
     }, []);
     const handleActivityChange = (event) => {
         const activity = event.target.value;
-        dispatch(filterCountriesByActivity(activity))
+        if (activity === "all") {
+            dispatch (resetCountries());
+        } else {
+            dispatch(filterCountriesByActivity(activity));
+        }
     };
     return (
         <div>

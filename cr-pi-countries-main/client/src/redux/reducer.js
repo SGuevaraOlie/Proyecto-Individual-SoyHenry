@@ -48,14 +48,9 @@ const rootReducer = ( state = initialState, {type, payload}) => {
                 countries: payload
             }
         case FILTER_COUNTRIES_BY_ACTIVITY:
-            const activity = payload;
-            const allCountries = state.allCountries;
-            const filteredByActivity = activity === "all"
-            ? allCountries
-            : allCountries.filter(country => country.Activities && country.Activities.some(act => act.name === activity));
-            return {
+            return{
                 ...state,
-                countries: filteredByActivity,
+                countries: payload
             }
         case SORT_COUNTRIES_BY_NAME_ASCENDING:
             return {

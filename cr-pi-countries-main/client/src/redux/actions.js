@@ -77,10 +77,10 @@ export const filterCountriesByContinent = (continent) => {
 export const filterCountriesByActivity = (activity) => {
     return (dispatch, getState) => {
         const allCountries = getState().allCountries;
-        const filteredCountries = 
-            activity === "all"
-            ? allCountries
-            : allCountries.filter((country) => country.Activities && country.Activities.some((act) => act.name === activity));
+        const filteredCountries = allCountries.filter((country) =>
+            country.Countries && country.Countries.includes(activity)
+        );
+        console.log("Filtered Countries:", filteredCountries);
         dispatch({
             type: FILTER_COUNTRIES_BY_ACTIVITY,
             payload: filteredCountries,
