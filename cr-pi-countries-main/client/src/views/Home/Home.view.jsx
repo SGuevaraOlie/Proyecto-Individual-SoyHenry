@@ -27,21 +27,19 @@ const Home = () => {
         dispatch(getCountries());
     }, [dispatch]);
     return(
-        <div className={styles.mainDiv}>
+        <div>
             <div className={styles.sortDiv}>
                 <Sort />
-            </div>
-            <div className={styles.filtersDiv}>
                 <Filter />
                 <ActivityFilter />
             </div>
-            <div className={styles.Cards}>
+            <div>
                 <Cards currentCards={currentCards} />
             </div>
             <div className={styles.paginado}>
-                <button onClick={primerPagina} disabled={currentPage===1}>Primer página</button>
-                <button onClick={anteriorPagina} disabled={currentPage===1}>Página Anterior</button>
-                <button onClick={siguientePagina} disabled={indexUltimaCarta >= countries.length}>Página siguiente</button>
+                <button onClick={primerPagina} disabled={currentPage===1} className={styles.btn}>Primer página</button>
+                <button onClick={anteriorPagina} disabled={currentPage===1} className={styles.btn}>Página Anterior</button>
+                <button onClick={siguientePagina} disabled={indexUltimaCarta >= countries.length} className={styles.btn}>Página siguiente</button>
             </div>
         </div>
     )

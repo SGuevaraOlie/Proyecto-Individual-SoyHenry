@@ -15,13 +15,13 @@ const Landing = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setTextoIndex((prevIndex) => (prevIndex + 1) % textoBienvenida.length);
-        }, 3000);
+        }, 2000);
         return () => clearInterval(intervalId);
     }, [textoBienvenida])
     return (
-        <div className={styles}>
-            <div className={styles}>
-            <h1>{textoBienvenida[textoIndex]}</h1>
+        <div className={styles.body}>
+            <div className={styles.textDiv}>
+            <h1 className={styles.changinTitle}>{textoBienvenida[textoIndex]}</h1>
             <h2>Este es mi PI, en el que podrás buscar paises con sus datos.</h2>
             <h2>Ademas podrás crear, almacenar y clasificar actividades por pais</h2>
             <Link to={PATHROUTES.HOME}>

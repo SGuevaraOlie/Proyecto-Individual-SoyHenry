@@ -1,7 +1,9 @@
 // Router
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 // React
 import { useState, useEffect } from 'react'
+// Helpers
+import PATHROUTES from '../../helpers/PathRoutes.helper';
 // Axios
 import axios from 'axios';
 // Styles
@@ -21,20 +23,20 @@ const Detail = () => {
         })
     }, [id]);
     return (
-        <div className={styles.mainDiv}>
+        <div className={styles.body}>
             <div className={styles.dataDiv}>
-                <div className={styles.titleDiv}>
-                    <h2>{country?.ID}</h2>
-                    <h1>{country?.name}</h1>
-                </div>
-                <div className={styles.bodyDiv}>
+                    <h1 className={styles.titulo}>{country?.name}</h1>
                     <h2>Continente:{country?.continente}</h2>
                     <h2>Capital:{country?.capital}</h2>
                     <h2>Subregion:{country?.subregion}</h2>
                     <h2>Área:{country?.area}</h2>
                     <h2>Población:{country?.poblacion}</h2>
-                </div>
+            </div>
+            <div className={styles.rightContainer} >
                 <img src={country?.image} alt='' className={styles.image} />
+                <Link to={PATHROUTES.HOME}>
+                    <button className={styles.btn}>Volver</button>
+                </Link>
             </div>
         </div>
     )

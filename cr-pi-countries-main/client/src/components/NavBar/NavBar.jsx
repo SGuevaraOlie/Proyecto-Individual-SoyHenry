@@ -11,9 +11,9 @@ const NavBar = () => {
     return (
         <div className={styles.navMain}>
             <div className={styles.links}>
-                <Link to={PATHROUTES.LANDING}><h1>Landing</h1></Link>
-                <Link to={PATHROUTES.HOME}><h1>Home</h1></Link>
-                <Link to={PATHROUTES.FORM}><h1>Crear Actividades</h1></Link>
+                <Link to={PATHROUTES.LANDING} className={styles.title}><h1>Countries APP</h1></Link>
+                <Link to={PATHROUTES.HOME} className={styles.title}><h1>Home</h1></Link>
+                <Link to={PATHROUTES.FORM} className={styles.title}><h1>Crear Actividades</h1></Link>
             </div>
             <Routes>
                 <Route path={PATHROUTES.HOME} element={<SearchBar />} />

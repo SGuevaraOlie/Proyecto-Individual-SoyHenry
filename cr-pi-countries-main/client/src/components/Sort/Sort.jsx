@@ -8,6 +8,8 @@ import {
     sortCountriesByPopulationDescending,
     resetCountries
 } from '../../redux/actions';
+// Styles
+import styles from './Sort.module.css'
 
 const Sort = () => {
     const dispatch = useDispatch();
@@ -25,7 +27,7 @@ const Sort = () => {
         }
     }
     return (
-        <select onChange={handleChange}>
+        <select onChange={handleChange} className={styles.select}>
             <option value="unsorted">Ordenar por...</option>
             <option value="name-ascending">Nombre ↑</option>
             <option value="name-descending">Nombre ↓</option>

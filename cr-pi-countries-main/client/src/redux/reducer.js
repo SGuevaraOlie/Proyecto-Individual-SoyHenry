@@ -70,12 +70,12 @@ const rootReducer = ( state = initialState, {type, payload}) => {
         case SORT_COUNTRIES_BY_POPULATION_ASCENDING:
             return {
                 ...state,
-                countries: [...state.countries].sort((a,b) => a.poblacion - b.poblacion)
+                countries: [...state.countries].sort((a,b) => b.poblacion - a.poblacion)
             }
         case SORT_COUNTRIES_BY_POPULATION_DESCENDING:
             return {
                 ...state,
-                countries: [...state.countries].sort((a,b) => b.poblacion - a.poblacion)
+                countries: [...state.countries].sort((a,b) => a.poblacion - b.poblacion)
             }
         default:
             return {...state}

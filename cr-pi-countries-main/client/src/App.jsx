@@ -15,7 +15,7 @@ import NavBar from './components/NavBar/NavBar'
 
 function App() {
   const { pathname } = useLocation();
-  const noNavBar = pathname === PATHROUTES.LANDING || pathname === PATHROUTES.ERROR; 
+  const noNavBar = pathname === PATHROUTES.LANDING;
   return (
     <div className='App'>
       {!noNavBar && <NavBar />}

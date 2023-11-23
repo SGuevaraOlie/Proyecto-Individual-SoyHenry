@@ -3,7 +3,7 @@ import { useState } from 'react'
 // Redux
 import { useDispatch } from 'react-redux'
 // Actions
-import { searchCountries } from '../../redux/actions'
+import { resetCountries, searchCountries, setCurrentPage } from '../../redux/actions'
 // Styles
 import styles from './SearchBar.module.css'
 
@@ -13,14 +13,29 @@ const SearchBar = () => {
     const handleChange = (e) => {
         const {value} = e.target;
         setName(value)
+        if (value.trim() === ''){
+            dispatch(resetCountries());
+            dispatch(setCurrentPage(1));
+        }
     };
+    const countryName = (name) => {
+        return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    }
     const onSearch = (name) => {
-        dispatch(searchCountries(name));
+        const formattedName = countryName(name);
+        if (formattedName === '') alert('Por favor, ingrese un nombre de país.')
+        dispatch(searchCountries(formattedName));
+        dispatch(setCurrentPage(1));
+    };
+    const handleReset = () => {
+        dispatch(resetCountries());
+        dispatch(setCurrentPage(1));
     };
     return (
-        <div>
-            <input type='search' onChange={handleChange} className={styles.searchBar} placeholder='Escribe el nombre de un país 🔍'/>
-            <button onClick={() => onSearch(name)}>Buscar</button>
+        <div className={styles.divBar}>
+            <input type='search' onChange={handleChange} className={styles.inputBar} placeholder='Escribe el nombre de un país 🔍'/>
+            <button className={styles.btn} onClick={() => onSearch(name)}>Buscar</button>
+            <button className={styles.btn2} onClick={handleReset}>Reset</button>
         </div>
     )
 }
